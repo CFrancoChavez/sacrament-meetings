@@ -3,6 +3,7 @@ import { connection } from 'next/server';
 import { getMeetings } from '@/lib/meetings-db';
 
 export default async function CurrentSundayPage() {
+  // Informa a Next.js 16 que la fecha se calcula en tiempo de solicitud
   await connection();
 
   const today = new Date();
