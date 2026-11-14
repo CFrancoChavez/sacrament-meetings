@@ -44,7 +44,7 @@ export default function MeetingDetail({ meeting }: MeetingDetailProps) {
       <section className="space-y-2 text-sm">
         <h3 className="text-md font-bold text-slate-800 border-b border-slate-200 pb-1">Opening</h3>
         <div className="space-y-1">
-          <p><span className="font-semibold text-slate-700">Opening Hymn:</span> #{meeting.openingHymn.number} - "{meeting.openingHymn.title}"</p>
+          <p><span className="font-semibold text-slate-700">Opening Hymn:</span> #{meeting.openingHymn.number} - {meeting.openingHymn.title}</p>
           <p><span className="font-semibold text-slate-700">Invocation:</span> {meeting.openingPrayer}</p>
         </div>
       </section>
@@ -71,7 +71,7 @@ export default function MeetingDetail({ meeting }: MeetingDetailProps) {
       {/* Sacrament */}
       <section className="space-y-2 text-sm">
         <h3 className="text-md font-bold text-slate-800 border-b border-slate-200 pb-1">Sacrament</h3>
-        <p><span className="font-semibold text-slate-700">Sacrament Hymn:</span> #{meeting.sacramentHymn.number} - "{meeting.sacramentHymn.title}"</p>
+        <p><span className="font-semibold text-slate-700">Sacrament Hymn:</span> #{meeting.sacramentHymn.number} - {meeting.sacramentHymn.title}</p>
       </section>
 
       {/* Speakers / Musical Numbers */}
@@ -100,7 +100,7 @@ export default function MeetingDetail({ meeting }: MeetingDetailProps) {
       <section className="space-y-2 text-sm">
         <h3 className="text-md font-bold text-slate-800 border-b border-slate-200 pb-1">Closing</h3>
         <div className="space-y-1">
-          <p><span className="font-semibold text-slate-700">Closing Hymn:</span> #{meeting.closingHymn.number} - "{meeting.closingHymn.title}"</p>
+          <p><span className="font-semibold text-slate-700">Closing Hymn:</span> #{meeting.closingHymn.number} - {meeting.closingHymn.title}</p>
           <p><span className="font-semibold text-slate-700">Benediction:</span> {meeting.closingPrayer}</p>
         </div>
       </section>

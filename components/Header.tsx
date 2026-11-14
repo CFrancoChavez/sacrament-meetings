@@ -1,21 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
+const emptySubscribe = () => () => {};
 
 export default function Header() {
-  const [currentDate, setCurrentDate] = useState<string>('');
-
-  useEffect(() => {
-    setCurrentDate(
+  const currentDate = useSyncExternalStore(
+    emptySubscribe,
+    () =>
       new Date().toLocaleDateString('en-US', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-      })
-    );
-  }, []);
-
+      }),
+    () => ''
+  );
+  
   return (
     <header className="bg-slate-800 text-white shadow-md">
       <div className="max-w-5xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-2">
