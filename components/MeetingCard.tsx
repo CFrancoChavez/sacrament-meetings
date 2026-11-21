@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { SacramentMeeting } from '@/lib/types';
+import { deleteMeeting } from '@/lib/actions';
 
 interface MeetingCardProps {
   meeting: SacramentMeeting;
@@ -12,6 +13,8 @@ export default function MeetingCard({ meeting }: MeetingCardProps) {
     stake: 'bg-amber-100 text-amber-800 border-amber-200',
     general: 'bg-emerald-100 text-emerald-800 border-emerald-200',
   };
+
+  const deleteMeetingWithId = deleteMeeting.bind(null, meeting.id);
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-5 hover:shadow-md transition-shadow flex flex-col justify-between">
@@ -26,7 +29,7 @@ export default function MeetingCard({ meeting }: MeetingCardProps) {
             {meeting.meetingType}
           </span>
         </div>
-        
+
         <div className="text-sm text-slate-600 space-y-1 mb-4">
           <p><span className="font-semibold text-slate-700">Presiding:</span> {meeting.presiding}</p>
           <p><span className="font-semibold text-slate-700">Conducting:</span> {meeting.conducting}</p>
@@ -34,12 +37,33 @@ export default function MeetingCard({ meeting }: MeetingCardProps) {
         </div>
       </div>
 
-      <Link
-        href={`/meetings/${meeting.id}`}
-        className="block text-center bg-slate-800 hover:bg-slate-900 text-white font-medium py-2 px-4 rounded text-sm transition-colors"
-      >
-        View Agenda &rarr;
-      </Link>
+      <div className="space-y-2">
+        <Link
+          href={`/meetings/${meeting.id}`}
+          className="block text-center bg-slate-800 hover:bg-slate-900 text-white font-medium py-2 px-4 rounded text-sm transition-colors"
+        >
+          View Agenda &rarr;
+        </Link>
+
+        <div className="flex gap-2">
+          <Link
+            href={`/meetings/${meeting.id}/edit`}
+            className="flex-1 text-center border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-medium py-1.5 px-3 rounded text-xs transition-colors"
+          >
+            Edit
+          </Link>
+
+          <form action={deleteMeetingWithId} className="flex-1">
+            <button
+              type="submit"
+              aria-label={`Delete meeting on ${meeting.date}`}
+              className="w-full border border-red-200 bg-red-50 hover:bg-red-100 text-red-700 font-medium py-1.5 px-3 rounded text-xs transition-colors"
+            >
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
